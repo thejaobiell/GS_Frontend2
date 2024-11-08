@@ -1,0 +1,53 @@
+
+export default function Home() {
+  return (
+    <>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+      <h1>GreenPower</h1>
+    </>
+  );
+}

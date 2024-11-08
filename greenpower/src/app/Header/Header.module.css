@@ -1,0 +1,35 @@
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #0c8f00;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    z-index: 1000;
+    font-weight: bold;
+}
+
+@media (max-width: 767px) {
+    .header {
+        color: #ff5733;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .header {
+        color: #33c1ff;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .header {
+        color: #ffcc00;
+    }
+}
+
+@media (min-width: 1200px) {
+    .header {
+        color: #7e008f;
+    }
+}
