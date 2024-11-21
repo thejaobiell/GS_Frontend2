@@ -116,7 +116,7 @@ CREATE TABLE PAINELSOLAR (
 
 Confira a demonstração do projeto no YouTube através do link abaixo:
 
-[**Link para o vídeo de demonstração no YouTube**](VAZIO)
+[**Link para o vídeo de demonstração no YouTube**](https://youtu.be/niic5dHiktg))
 
 ---
 
