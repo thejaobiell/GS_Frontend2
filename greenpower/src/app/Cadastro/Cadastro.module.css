@@ -1,0 +1,165 @@
+.myConfirmBtn {
+    background-color: #28a745;
+    color: white;
+}
+
+.myCancelBtn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.forms {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.fieldset {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+.label {
+    font-size: 1.2rem;
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.inputField {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #CCCCCC;
+    border-radius: 5px;
+    background-color: #F0F0F0;
+    font-size: 1.2rem;
+    box-sizing: border-box;
+}
+
+.passwordWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.toggleButton {
+    position: absolute;
+    right: 10px;
+    top: 40%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.submitButton {
+    width: 100%;
+    max-width: 200px;
+    height: 65px;
+    font-size: 16px;
+    border-radius: 20px;
+    border: 3px solid #B6B6B6;
+    background: #7BCE4A;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 15px 0 10px;
+    display: block;
+    font-size: 2rem;
+}
+
+.submitButton:hover {
+    background: #006d09;
+}
+
+.legenda {
+    font-style: italic;
+    font-weight: bold;
+}
+
+@media (max-width: 767px) {
+    .forms {
+        padding: 20px;
+    }
+
+    .inputField {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .submitButton {
+        margin: 20px 0 35px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .inputField {
+        padding: 12px;
+        font-size: 18px;
+    }
+
+    .submitButton {
+        margin: 25px 0 12px;
+    }
+
+    .passwordWrapper {
+        width: 100%;
+        position: relative;
+    }
+
+    .toggleButton {
+        right: 45px;
+        top: 40%;
+        transform: translateY(-50%);
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .inputField {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .submitButton {
+        margin: 15px 0 10px;
+    }
+
+    .passwordWrapper {
+        width: 100%;
+        position: relative;
+    }
+
+    .toggleButton {
+        right: 10px;
+        top: 40%;
+        transform: translateY(-50%);
+    }
+}
+
+@media (min-width: 1200px) {
+    .forms {
+        padding: 25px;
+    }
+
+    .passwordWrapper {
+        width: 100%;
+        position: relative;
+    }
+
+    .toggleButton {
+        right: 55px;
+        top: 40%;
+        transform: translateY(-50%);
+    }
+}

@@ -1,0 +1,77 @@
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+.cabecalho {
+    font-size: 2rem;
+    color: #2d3a3a;
+    margin-bottom: 10px;
+}
+
+.subCabecalho {
+    font-size: 1.5rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.listaProdutos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.itemProduto {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    width: 80%;
+    max-width: 600px;
+    text-align: left;
+}
+
+.imagemProduto {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.detalhesProduto {
+    display: flex;
+    align-items: center;
+}
+
+.nomeProduto {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.descricaoProduto {
+    font-size: 1rem;
+    color: #666;
+}
+
+.precoProduto,
+.quantidadeProduto {
+    font-size: 1rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.botaoDashboard {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.botaoDashboard:hover {
+    background-color: #45a049;
+}

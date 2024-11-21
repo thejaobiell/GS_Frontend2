@@ -1,0 +1,414 @@
+.perguntaContainer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.pergunta {
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+.text {
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.pergunta:hover,
+.text:hover {
+    text-decoration: underline;
+}
+
+.dadosValue {
+    font-size: 1.2rem;
+}
+.dadosID {
+    font-size: 1.5rem;
+}
+
+.myConfirmBtn {
+    background-color: #28a745;
+    color: white;
+}
+
+.myCancelBtn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    gap: 20px;
+}
+
+.dashboardContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.dashboardContainer h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.mainContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    gap: 20px;
+}
+
+.userDataFieldset {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+    max-width: 600px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.userDataFieldset legend {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.userDataFieldset div {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.labelTitulo {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.emailInput,
+.senhaInput {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #CCCCCC;
+    border-radius: 5px;
+    background-color: #F0F0F0;
+    font-size: 1.2rem;
+    box-sizing: border-box;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+}
+
+.editButton,
+.saveButton {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 10px;
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+
+.editButton:hover,
+.saveButton:hover{
+    background-color: #45a049;
+}
+
+.cancelButton {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 10px;
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+
+.cancelButton:hover {
+    background-color: #942222;
+}
+
+.deleteButton{
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 10px;
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+
+.logoutButton {
+    font-weight: bolder;
+    font-size: 1.5rem;
+    background-color: #008CBA;
+    color: white;
+    padding: 20px 50px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.logoutButton:hover {
+    background-color: #005f92;
+
+}
+
+
+.sideFieldsets {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+    width: 40%;
+}
+
+.duplaFieldset {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: larger;
+    width: 100vh;
+}
+
+.bemVindo {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.contentWrapper {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.botaoComprar, .botaoGerenciar {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 10px;
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+
+.botaoComprar:hover, .botaoGerenciar:hover{
+    background-color: #3e8e41;
+}
+
+.texto{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+@media (max-width: 767px) {
+    .section {
+        align-items: center;
+        padding: 15px;
+    }
+
+    .dashboardContainer {
+        align-items: center;
+    }
+
+    .mainContent {
+        flex-direction: column;
+    }
+
+    .userDataFieldset {
+        width: 100%;
+    }
+
+    .sideFieldsets {
+        width: 100%; 
+    }
+
+    .editButton,
+    .saveButton,
+    .deleteButton,
+    .cancelButton {
+        margin: 10px;
+    }
+
+    .logoutButton{
+        align-self: center;
+        justify-items: center;
+        margin-bottom: 35px;
+    }
+
+    .emailInput,
+    .senhaInput {
+        width: 100%;
+        max-width: none;
+    }
+
+    .duplaFieldset{
+        height: auto;
+        width: auto;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .section {
+        align-items: center;
+        padding: 15px;
+        justify-content: center;
+    }
+
+    .dashboardContainer {
+        align-items: center;
+    }
+
+    .mainContent {
+        flex-direction: column;
+    }
+
+    .userDataFieldset {
+        width: 100%;
+    }
+
+    .sideFieldsets {
+        width: 100%;
+    }
+
+    .editButton,
+    .saveButton,
+    .deleteButton,
+    .cancelButton{
+        width: auto;
+        margin: 10px 0;
+    }
+
+    .duplaFieldset{
+        height: auto;
+        width: auto;
+    }
+
+    .logoutButton{
+        align-self: center;
+        justify-items: center;
+        margin-bottom: 25px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .section {
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .dashboardContainer {
+        align-items: flex-start;
+    }
+
+    .mainContent {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .userDataFieldset {
+        width: 55%;
+    }
+
+    .sideFieldsets {
+        width: 100%;
+    }
+
+    .logoutButton {
+        align-self: center;
+        justify-items: center;
+        margin-top: auto;
+        margin-bottom: 15px;
+    }
+
+    .editButton,
+    .saveButton,
+    .deleteButton,
+    .cancelButton {
+        width: auto;
+        margin: 5px;
+    }
+
+    .duplaFieldset {
+        width: 100%;
+        max-width: max-content;
+        height: auto;
+    }
+}
+
+@media (min-width: 1200px) {
+    .section {
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .mainContent {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .userDataFieldset {
+        width: 55%;
+    }
+
+    .sideFieldsets {
+        width: 100%;
+    }
+
+    .editButton,
+    .saveButton,
+    .deleteButton,
+    .cancelButton,
+    .logoutButton {
+        width: auto;
+        margin: 5px;
+    }
+
+    .dashboardContainer {
+        display: flex;
+        flex-direction: column;
+        height: 750px;
+    }
+
+    .logoutButton {
+        align-self: center;
+        justify-items: center;
+        margin-top: auto;
+        margin-bottom: 15px;
+    }
+
+    .duplaFieldset {
+        width: 100%;
+        max-width: max-content;
+        height: auto;
+    }
+
+    .sideFieldsets{
+        margin-left: 200px;
+    }
+}

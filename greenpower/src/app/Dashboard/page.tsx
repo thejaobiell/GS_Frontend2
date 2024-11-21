@@ -82,6 +82,7 @@ const Dashboard = () => {
             if (result.isConfirmed) {
                 sessionStorage.removeItem('logado');
                 sessionStorage.removeItem('usuario');
+                sessionStorage.removeItem('produtos');
                 router.push('/Login');
             } else if (result.isDismissed) {
                 window.location.reload();
@@ -282,6 +283,9 @@ const lidarSalvarMudancas = async () => {
                             </div>
                             <button onClick={lidarSalvarMudancas} className={styles.saveButton}>Salvar Alterações</button>
                             <button onClick={() => setEstaEditando(false)} className={styles.cancelButton}>Cancelar</button>
+                            <Link href={'/DeletarConta'}>
+                                <button className={styles.deleteButton}>Deletar Conta</button>
+                            </Link>
                         </fieldset>
                     )}
 
