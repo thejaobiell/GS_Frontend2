@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+---
 
-First, run the development server:
+# Global Solution: GreenPower
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Integrantes:
+- **João Gabriel Boaventura Marques e Silva** | RM: 554874 | 1TDSB-2024
+- **Lucas de Melo Pinheiro Pinho** | RM: 558791 | 1TDSB-2024
+- **Lucas Leal das Chagas** | RM: 551124 | 1TDSB-2024
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Instalações Necessárias
+Para navegar entre diferentes páginas no projeto, será necessário instalar o React Router DOM. Siga os passos abaixo:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Abra o terminal na pasta do projeto **Diagnoscar**.
+2. Execute o comando:
+   ```bash
+   npm install
+   ```
+   Aguarde a conclusão do download das dependências.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Após tudo instalado, dê um "Run As --> Run on Server" o 'greeenpowerweb' no Eclipse IDE com o 'Tomcat V9.0 Server', e depois de rodado em server crie as tabelas no Oracle SQL Developer usando o arquivo DiagnosCAR.sql
 
-## Learn More
+    ```bash
+DROP TABLE PAGAMENTO CASCADE CONSTRAINTS;
+DROP TABLE PEDIDO CASCADE CONSTRAINTS;
+DROP TABLE ITEM_COMPRADO CASCADE CONSTRAINTS;
+DROP TABLE PRODUTO CASCADE CONSTRAINTS;
+DROP TABLE CLIENTE CASCADE CONSTRAINTS;
+DROP TABLE PAINELSOLAR CASCADE CONSTRAINTS;
 
-To learn more about Next.js, take a look at the following resources:
+CREATE TABLE CLIENTE (
+    email_cliente VARCHAR2(100) CONSTRAINT pk_email_cliente PRIMARY KEY,
+    senha_cliente VARCHAR2(16) CONSTRAINT senha_cliente NOT NULL,
+    nome_cliente VARCHAR2(100) CONSTRAINT nome_cliente NOT NULL,
+    sobrenome_cliente VARCHAR2(100) CONSTRAINT sobrenome_cliente NOT NULL,
+    cpf_cliente VARCHAR2(14) CONSTRAINT cpf_cliente UNIQUE NOT NULL,
+    rua_cliente VARCHAR2(120) CONSTRAINT rua_cliente NOT NULL,
+    numero_cliente NUMBER CONSTRAINT numero_cliente NOT NULL,
+    complemento_cliente VARCHAR2(120),
+    bairro_cliente VARCHAR2(120) CONSTRAINT bairro_cliente NOT NULL,
+    cidade_cliente VARCHAR2(120) CONSTRAINT cidade_cliente NOT NULL,
+    estado_cliente VARCHAR2(2) CONSTRAINT estado_cliente NOT NULL,
+    cep_cliente VARCHAR2(9) CONSTRAINT cep_cliente NOT NULL
+);
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+CREATE TABLE PRODUTO (
+    id_produto NUMBER CONSTRAINT pk_id_produto PRIMARY KEY,
+    nome_produto VARCHAR2(100) CONSTRAINT nome_produto NOT NULL,
+    descricao_produto VARCHAR2(500),
+    preco_produto NUMBER(10, 2) CONSTRAINT preco_produto NOT NULL,
+    tipo_produto VARCHAR2(50) CONSTRAINT tipo_produto NOT NULL
+);
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+CREATE TABLE PEDIDO (
+    id_pedido NUMBER CONSTRAINT pk_id_pedido PRIMARY KEY,
+    email_cliente VARCHAR2(100) CONSTRAINT fk_email_cliente_pedido REFERENCES CLIENTE(email_cliente),
+    data_pedido DATE DEFAULT TRUNC(SYSDATE) CONSTRAINT data_pedido NOT NULL,
+    status_pedido VARCHAR2(20) CONSTRAINT status_pedido CHECK (status_pedido IN ('Novo', 'Em Andamento', 'Enviado', 'Entregue', 'Cancelado')),
+    status_pagamento VARCHAR2(20) CONSTRAINT status_pagamento CHECK (status_pagamento IN ('Pendente', 'Concluído', 'Cancelado')),
+    valor_total NUMBER(10, 2) CONSTRAINT valor_total_pedido NOT NULL
+);
 
-## Deploy on Vercel
+CREATE TABLE ITEM_COMPRADO (
+    id_item NUMBER CONSTRAINT id_item UNIQUE,
+    id_pedido NUMBER CONSTRAINT fk_id_pedido_item REFERENCES PEDIDO(id_pedido),
+    id_produto NUMBER CONSTRAINT fk_id_produto_item REFERENCES PRODUTO(id_produto),
+    quantidade NUMBER CONSTRAINT quantidade_item NOT NULL,
+    preco_unitario NUMBER(10, 2) CONSTRAINT preco_unitario_item NOT NULL,
+    preco_final NUMBER(10, 2) CONSTRAINT preco_final NOT NULL
+);
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+CREATE TABLE PAGAMENTO (
+    id_pagamento NUMBER CONSTRAINT pk_id_pagamento PRIMARY KEY,
+    id_pedido NUMBER CONSTRAINT fk_id_pedido_pagamento REFERENCES PEDIDO(id_pedido),
+    id_transacao VARCHAR2(50) CONSTRAINT id_transacao_pagamento UNIQUE NOT NULL,
+    forma_pagamento VARCHAR2(50) CONSTRAINT forma_pagamento CHECK (forma_pagamento IN ('Cartão', 'PIX', 'Boleto')) NOT NULL,
+    status_pagamento VARCHAR2(20) CONSTRAINT status_pagamento_pgt CHECK (status_pagamento IN ('Pendente', 'Concluído', 'Cancelado')),
+    data_pagamento DATE DEFAULT TRUNC(SYSDATE),
+    valor_pagamento NUMBER(10, 2) CONSTRAINT valor_pagamento NOT NULL,
+    qtd_parcelas NUMBER(2) DEFAULT 1 CHECK (qtd_parcelas BETWEEN 1 AND 10)
+);
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+CREATE TABLE PAINELSOLAR (
+    id_painelsolar NUMBER CONSTRAINT pk_id_painelsolar PRIMARY KEY,
+    email_cliente VARCHAR2(100) CONSTRAINT fk_email_cliente_painelsolar REFERENCES CLIENTE(email_cliente),
+    energia_gerada_kwh NUMBER(10, 2) CONSTRAINT energia_gerada_positivo CHECK (energia_gerada_kwh >= 0),
+    energia_consumida_kwh NUMBER(10, 2) CONSTRAINT energia_consumida_positivo CHECK (energia_consumida_kwh >= 0),
+    data_registro DATE DEFAULT TRUNC(SYSDATE) CONSTRAINT data_registro NOT NULL
+);
+    ```
+
+### Demonstração
+Confira a demonstração em vídeo no YouTube através do link abaixo:
+
+[**Link para o vídeo de demonstração no YouTube**](VAZIO)
+
+### Caso de algum problema
+Link Google Drive (Backup): [**Link Google Drive**](https://drive.google.com/drive/folders/12_xYJp66dD9F4ibRhHT09Iw9VJC6FO57?usp=sharing)
+
+Link GIHUB(Repositório): [**Link GITHUB**](https://github.com/thejaobiell/https://github.com/thejaobiell/GS_Frontend2)
+
+---
