@@ -5,7 +5,6 @@ import { useEffect } from 'react';
 import { FaSquareGithub, FaLinkedin } from "react-icons/fa6";
 
 const Membros = () => {
-
     useEffect(() => {
         document.title = "Membros - GreenPower";
         const link = document.createElement('link');
@@ -13,7 +12,6 @@ const Membros = () => {
         link.href = '/Logos/GreenPower.ico';
         document.head.appendChild(link);
     }, [])
-
     return (
         <>
             <section className={styles.membrosContainer}>
@@ -23,10 +21,10 @@ const Membros = () => {
                         src="/Fotos dos Membros/JoaoGabriel.jpg"
                         alt="João Gabriel Boaventura Marques e Silva"
                     />
-                    <h1>João Gabriel Boaventura Marques e Silva <br/> RM554874 - 1TDSB-2024</h1>
+                    <h1>João Gabriel Boaventura Marques e Silva <br /> RM554874 - 1TDSB-2024</h1>
                     <div className={styles.iconContainer}>
-                        <a href='https://github.com/thejaobiell' className={styles.icon}><FaSquareGithub /></a>
-                        <a href='https://www.linkedin.com/in/jo%C3%A3o-gabriel-boaventura-marques-e-silva-93b67b323/'className={styles.icon}><FaLinkedin /></a>
+                        <a href='https://github.com/thejaobiell' className={`${styles.icon} ${styles.github}`}><FaSquareGithub /></a>
+                        <a href='https://www.linkedin.com/in/jo%C3%A3o-gabriel-boaventura-marques-e-silva-93b67b323/' className={`${styles.icon} ${styles.linkedin}`}><FaLinkedin /></a>
                     </div>
                 </div>
 
@@ -36,10 +34,10 @@ const Membros = () => {
                         src="/Fotos dos Membros/LucasMelo.jpg"
                         alt="Lucas de Melo Pinho Pinheiro"
                     />
-                    <h1>Lucas de Melo Pinho Pinheiro <br/> RM558791 - 1TDSB-2024</h1>
-                    <div className={styles.iconContainer}>                    
-                        <a href=''className={styles.icon}><FaSquareGithub /></a>
-                        <a href=''className={styles.icon}><FaLinkedin /></a>
+                    <h1>Lucas de Melo Pinho Pinheiro <br /> RM558791 - 1TDSB-2024</h1>
+                    <div className={styles.iconContainer}>
+                        <a href='https://github.com/DS7XD' className={`${styles.icon} ${styles.github}`}><FaSquareGithub /></a>
+                        <a href='https://www.linkedin.com/in/lucas-p-0210a7272/' className={`${styles.icon} ${styles.linkedin}`}><FaLinkedin /></a>
                     </div>
                 </div>
 
@@ -49,10 +47,10 @@ const Membros = () => {
                         src="/Fotos dos Membros/LucasLeal.jpg"
                         alt="Lucas Leal das Chagas"
                     />
-                    <h1>Lucas Leal das Chagas <br/> RM551124 - 1TDSB-2024</h1>
-                    <div className={styles.iconContainer}>    
-                        <a href='https://github.com/LucasLDC'className={styles.icon}><FaSquareGithub /></a>
-                        <a href='https://www.linkedin.com/in/lucas-leal-das-chagas-3424a2210/'className={styles.icon}><FaLinkedin /></a>
+                    <h1>Lucas Leal das Chagas <br /> RM551124 - 1TDSB-2024</h1>
+                    <div className={styles.iconContainer}>
+                        <a href='https://github.com/LucasLDC' className={`${styles.icon} ${styles.github}`}><FaSquareGithub /></a>
+                        <a href='https://www.linkedin.com/in/lucas-leal-das-chagas-3424a2210/' className={`${styles.icon} ${styles.linkedin}`}><FaLinkedin /></a>
                     </div>
                 </div>
             </section>
