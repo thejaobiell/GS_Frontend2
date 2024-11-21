@@ -1,26 +1,41 @@
 
 ---
 
-# Global Solution: GreenPower
+# Global Solution - GreenPower
 
 ### Integrantes:
 - **João Gabriel Boaventura Marques e Silva** | RM: 554874 | 1TDSB-2024
 - **Lucas de Melo Pinheiro Pinho** | RM: 558791 | 1TDSB-2024
 - **Lucas Leal das Chagas** | RM: 551124 | 1TDSB-2024
 
-### Instalações Necessárias
-Para navegar entre diferentes páginas no projeto, será necessário instalar o React Router DOM. Siga os passos abaixo:
+---
 
-1. Abra o terminal na pasta do projeto **Diagnoscar**.
-2. Execute o comando:
+## Instalações Necessárias
+
+Para navegar entre diferentes páginas do projeto, será necessário instalar o **React Router DOM**. Siga os passos abaixo para a configuração do ambiente:
+
+### Passo 1: Instalar dependências
+
+1. Abra o terminal na pasta do projeto **GreenPower**.
+2. Execute o seguinte comando para instalar as dependências do projeto:
    ```bash
    npm install
    ```
-   Aguarde a conclusão do download das dependências.
+3. Aguarde a conclusão do download das dependências.
 
-3. Após tudo instalado, dê um "Run As --> Run on Server" o 'greeenpowerweb' no Eclipse IDE com o 'Tomcat V9.0 Server', e depois de rodado em server crie as tabelas no Oracle SQL Developer usando o arquivo DiagnosCAR.sql
+### Passo 2: Configurar o servidor
 
-    ```bash
+1. Após a instalação das dependências, abra o projeto no Eclipse IDE.
+2. Execute o projeto com **Tomcat V9.0 Server**:
+   - **Run As** → **Run on Server**.
+3. Após a execução do servidor, crie as tabelas no banco de dados Oracle SQL Developer utilizando o script **DiagnosCAR.sql**.
+
+### Passo 3: Criar as tabelas no banco de dados Oracle
+
+Execute os seguintes comandos no Oracle SQL Developer para criar as tabelas necessárias para o funcionamento do projeto:
+
+```sql
+-- Excluindo tabelas antigas
 DROP TABLE PAGAMENTO CASCADE CONSTRAINTS;
 DROP TABLE PEDIDO CASCADE CONSTRAINTS;
 DROP TABLE ITEM_COMPRADO CASCADE CONSTRAINTS;
@@ -28,6 +43,7 @@ DROP TABLE PRODUTO CASCADE CONSTRAINTS;
 DROP TABLE CLIENTE CASCADE CONSTRAINTS;
 DROP TABLE PAINELSOLAR CASCADE CONSTRAINTS;
 
+-- Criando a tabela CLIENTE
 CREATE TABLE CLIENTE (
     email_cliente VARCHAR2(100) CONSTRAINT pk_email_cliente PRIMARY KEY,
     senha_cliente VARCHAR2(16) CONSTRAINT senha_cliente NOT NULL,
@@ -43,6 +59,7 @@ CREATE TABLE CLIENTE (
     cep_cliente VARCHAR2(9) CONSTRAINT cep_cliente NOT NULL
 );
 
+-- Criando a tabela PRODUTO
 CREATE TABLE PRODUTO (
     id_produto NUMBER CONSTRAINT pk_id_produto PRIMARY KEY,
     nome_produto VARCHAR2(100) CONSTRAINT nome_produto NOT NULL,
@@ -51,6 +68,7 @@ CREATE TABLE PRODUTO (
     tipo_produto VARCHAR2(50) CONSTRAINT tipo_produto NOT NULL
 );
 
+-- Criando a tabela PEDIDO
 CREATE TABLE PEDIDO (
     id_pedido NUMBER CONSTRAINT pk_id_pedido PRIMARY KEY,
     email_cliente VARCHAR2(100) CONSTRAINT fk_email_cliente_pedido REFERENCES CLIENTE(email_cliente),
@@ -60,6 +78,7 @@ CREATE TABLE PEDIDO (
     valor_total NUMBER(10, 2) CONSTRAINT valor_total_pedido NOT NULL
 );
 
+-- Criando a tabela ITEM_COMPRADO
 CREATE TABLE ITEM_COMPRADO (
     id_item NUMBER CONSTRAINT id_item UNIQUE,
     id_pedido NUMBER CONSTRAINT fk_id_pedido_item REFERENCES PEDIDO(id_pedido),
@@ -69,6 +88,7 @@ CREATE TABLE ITEM_COMPRADO (
     preco_final NUMBER(10, 2) CONSTRAINT preco_final NOT NULL
 );
 
+-- Criando a tabela PAGAMENTO
 CREATE TABLE PAGAMENTO (
     id_pagamento NUMBER CONSTRAINT pk_id_pagamento PRIMARY KEY,
     id_pedido NUMBER CONSTRAINT fk_id_pedido_pagamento REFERENCES PEDIDO(id_pedido),
@@ -80,6 +100,7 @@ CREATE TABLE PAGAMENTO (
     qtd_parcelas NUMBER(2) DEFAULT 1 CHECK (qtd_parcelas BETWEEN 1 AND 10)
 );
 
+-- Criando a tabela PAINELSOLAR
 CREATE TABLE PAINELSOLAR (
     id_painelsolar NUMBER CONSTRAINT pk_id_painelsolar PRIMARY KEY,
     email_cliente VARCHAR2(100) CONSTRAINT fk_email_cliente_painelsolar REFERENCES CLIENTE(email_cliente),
@@ -87,16 +108,23 @@ CREATE TABLE PAINELSOLAR (
     energia_consumida_kwh NUMBER(10, 2) CONSTRAINT energia_consumida_positivo CHECK (energia_consumida_kwh >= 0),
     data_registro DATE DEFAULT TRUNC(SYSDATE) CONSTRAINT data_registro NOT NULL
 );
-    ```
+```
 
-### Demonstração
-Confira a demonstração em vídeo no YouTube através do link abaixo:
+---
+
+## Demonstração
+
+Confira a demonstração do projeto no YouTube através do link abaixo:
 
 [**Link para o vídeo de demonstração no YouTube**](VAZIO)
 
-### Caso de algum problema
-Link Google Drive (Backup): [**Link Google Drive**](https://drive.google.com/drive/folders/12_xYJp66dD9F4ibRhHT09Iw9VJC6FO57?usp=sharing)
+---
 
-Link GIHUB(Repositório): [**Link GITHUB**](https://github.com/thejaobiell/https://github.com/thejaobiell/GS_Frontend2)
+## Caso de algum problema
+
+Se houver algum problema com o projeto, você pode acessar os backups e o repositório do GitHub:
+
+- **Link Google Drive (Backup)**: [**Clique aqui**](https://drive.google.com/drive/folders/12_xYJp66dD9F4ibRhHT09Iw9VJC6FO57?usp=sharing)
+- **Repositório GitHub**: [**Clique aqui**](https://github.com/thejaobiell/GS_Frontend2)
 
 ---
