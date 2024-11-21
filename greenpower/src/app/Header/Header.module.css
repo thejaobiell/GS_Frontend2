@@ -56,7 +56,6 @@
 @media (max-width: 767px) {
     .header {
         justify-content: space-between;
-        color: #ff5733;
         padding: 10px 15px;
     }
 
@@ -73,25 +72,4 @@
         position: static;
         gap: 10px;
     }
-}
-
-@media (min-width: 768px) and (max-width: 991px) {
-    .header {
-        color: #33c1ff;
-    }
-
-}
-
-@media (min-width: 992px) and (max-width: 1199px) {
-    .header {
-        color: #ffcc00;
-    }
-
-}
-
-@media (min-width: 1200px) {
-    .header {
-        /* color: #7e008f; */
-    }
-
 }

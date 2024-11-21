@@ -27,7 +27,6 @@ const Pagamento = () => {
     const [parcelas, setParcelas] = useState(1);
     const [erroFormulario, setErroFormulario] = useState('');
 
-
     useEffect(() => {
         document.title = "Pagamento - GreenPower";
         const link = document.createElement('link');
@@ -61,7 +60,7 @@ const Pagamento = () => {
 
     const handleFormaPagamento = (forma: string) => {
         setFormaPagamento(forma);
-        setErroFormulario(''); 
+        setErroFormulario('');
         if (forma === 'pix' || forma === 'boleto') {
             const numero = Math.floor(100000000000 + Math.random() * 900000000000);
             setNumeroGerado(numero.toString());
@@ -108,12 +107,17 @@ const Pagamento = () => {
         return true;
     };
 
-    const handleSubmitCartao = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (validarFormularioCartao()) {
-            alert(`Pagamento realizado com sucesso! Parcelado em ${parcelas}x.`);
-            router.push('/TelaFinalPagamento');
+    const handlePagamento = () => {
+        if (formaPagamento === 'cartao' && !validarFormularioCartao()) {
+            return;
         }
+
+        alert(`Pagamento realizado com sucesso!
+Forma de pagamento: ${formaPagamento}
+Parcelas: ${parcelas}x
+Total: R$${total.toFixed(2)}`);
+
+        router.push('/TelaFinalPagamento');
     };
 
     return (
@@ -159,7 +163,7 @@ const Pagamento = () => {
                 <div className={styles.formCartao}>
                     <fieldset className={styles.fieldset}>
                         <legend>Pagamento com Cartão</legend>
-                        <form onSubmit={handleSubmitCartao}>
+                        <form onSubmit={(e) => e.preventDefault()}>
                             <div className={styles.formGroup}>
                                 <label className={styles.formLabel}>Número do Cartão:</label>
                                 <input
@@ -223,7 +227,11 @@ const Pagamento = () => {
                                 </select>
                             </div>
                             {erroFormulario && <p className={styles.erro}>{erroFormulario}</p>}
-                            <button type="submit" className={styles.formaButton}>
+                            <button
+                                type="button"
+                                className={styles.formaButton}
+                                onClick={handlePagamento}
+                            >
                                 Pagar
                             </button>
                         </form>
@@ -236,7 +244,11 @@ const Pagamento = () => {
                     <h2>Pagamento com PIX</h2>
                     <p>Use o código abaixo para realizar o pagamento:</p>
                     <div className={styles.numeroGerado}>{numeroGerado}</div>
-                    <button type="submit" className={styles.formaButton}>
+                    <button
+                        type="button"
+                        className={styles.formaButton}
+                        onClick={handlePagamento}
+                    >
                         Pagar
                     </button>
                 </div>
@@ -265,12 +277,15 @@ const Pagamento = () => {
                             <option value={9}>9x</option>
                             <option value={10}>10x</option>
                         </select>
+                        <h2>ATENÇÃO: O não pagamento em até 7 dias irá resultar no cancelamento do seu pedido</h2>
                     </div>
-                    <Link href="/TelaFinalPagamento">
-                        <button type="submit" className={styles.formaButton}>
-                            Pagar
-                        </button>
-                    </Link>
+                    <button
+                        type="button"
+                        className={styles.formaButton}
+                        onClick={handlePagamento}
+                    >
+                        Pagar
+                    </button>
                 </div>
             )}
         </div>
