@@ -2,6 +2,8 @@
 import { useRouter } from 'next/navigation';
 import styles from "./Cadastro.module.css"; 
 import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
+import { FaEye,FaEyeSlash  } from "react-icons/fa";
 
 const Cadastro = () => {
     const [email_Cliente, setEmail_Cliente] = useState('');
@@ -59,23 +61,44 @@ const Cadastro = () => {
             senha_Cliente: senha_Cliente,
             nome_Cliente: nome_Cliente,
             sobrenome_Cliente: sobrenome_Cliente,
-            cpf_Cliente: cpf_Cliente.replace(/\D/g, ''),
+            cpf_Cliente: formatarCpf(cpf_Cliente),
             rua_Cliente: rua_Cliente,
             numero_Cliente: parseInt(numero_Cliente),
             complemento_Cliente: complemento_Cliente || 'N/A',
             bairro_Cliente: bairro_Cliente,
             cidade_Cliente: cidade_Cliente,
             estado_Cliente: estado_Cliente,
-            cep_Cliente: cep_Cliente.replace(/\D/g, '')
+            cep_Cliente: formatarCep(cep_Cliente)
         };
 
-        try {
-            await createCliente(cliente);
-            sessionStorage.setItem('cliente', JSON.stringify(cliente));
-            router.push('/Login');
-        } catch (error) {
-            console.error("Erro ao cadastrar cliente:", error);
-            alert("Erro ao cadastrar cliente.");
+        const result = await Swal.fire({
+            title: 'Realizar Cadastro?',
+            text: `Nome:${nome_Cliente} ${sobrenome_Cliente}\v` + ` | `+
+                `Email:${email_Cliente}\n` + ` | ` +
+                `CPF:${formatarCpf(cpf_Cliente)}\n` + ` | ` +
+                `Endereço:${rua_Cliente}, ${numero_Cliente} ${complemento_Cliente}\n` +
+                `${bairro_Cliente}, ${cidade_Cliente} - ${estado_Cliente}\n`  +
+                `CEP:${formatarCep(cep_Cliente)}`,
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonText: 'Cadastrar',
+            cancelButtonText: 'Cancelar',
+            customClass: {
+                confirmButton: styles.myConfirmBtn,
+                cancelButton: styles.myCancelBtn,
+            }
+        });
+    
+        if (result.isConfirmed) {
+            try {
+                await createCliente(cliente);
+                router.push('/Login');
+            } catch (error) {
+                console.error("Erro ao cadastrar cliente:", error);
+                alert("Erro ao cadastrar cliente.");
+            }
+        } else {
+            Swal.fire('Cadastro Cancelado', 'Você cancelou o cadastro.', 'info');
         }
     };
 
@@ -94,7 +117,7 @@ const Cadastro = () => {
         cep_Cliente: string; 
     }) => {
         try {
-            const response = await fetch('http://localhost:8080/greenpowerweb/rest/cliente', {
+            const response = await fetch('http://localhost:8080/greenpowerweb/rest/cliente/cadastrar', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -207,7 +230,7 @@ const Cadastro = () => {
                                     onClick={VisibilidadeSenha}
                                     className={styles.toggleButton}
                                 >
-                                    {mostrarSenha ? '👁️' : '🙈'}
+                                    {mostrarSenha ? <FaEyeSlash /> : <FaEye />}
                                 </button>
                             </div>
                         </label><br/>
@@ -227,7 +250,7 @@ const Cadastro = () => {
                                     onClick={VisibilidadeSenha2}
                                     className={styles.toggleButton}
                                 >
-                                    {mostrarSenha2 ? '👁️' : '🙈'}
+                                    {mostrarSenha2 ? <FaEyeSlash /> : <FaEye />}
                                 </button>
                             </div>
                         </label><br />
@@ -255,6 +278,7 @@ const Cadastro = () => {
                                 onChange={(e) => setRua_Cliente(e.target.value)} 
                                 required  
                                 className={styles.inputField}
+                                readOnly
                             /> 
                         </label><br />
 
@@ -287,6 +311,7 @@ const Cadastro = () => {
                                 onChange={(e) => setBairro_Cliente(e.target.value)} 
                                 required  
                                 className={styles.inputField}
+                                readOnly
                             /> 
                         </label><br />
 
@@ -298,6 +323,7 @@ const Cadastro = () => {
                                 onChange={(e) => setCidade_Cliente(e.target.value)} 
                                 required  
                                 className={styles.inputField}
+                                readOnly
                             /> 
                         </label><br />
 
@@ -309,6 +335,7 @@ const Cadastro = () => {
                                 onChange={(e) => setEstado_Cliente(e.target.value)} 
                                 required  
                                 className={styles.inputField}
+                                readOnly
                             /> 
                         </label><br />
                     </fieldset>
@@ -321,5 +348,4 @@ const Cadastro = () => {
         </>
     );
 };
-
 export default Cadastro;
