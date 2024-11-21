@@ -28,7 +28,7 @@ Para navegar entre diferentes páginas do projeto, será necessário instalar o 
 1. Após a instalação das dependências, abra o projeto no Eclipse IDE.
 2. Execute o projeto com **Tomcat V9.0 Server**:
    - **Run As** → **Run on Server**.
-3. Após a execução do servidor, crie as tabelas no banco de dados Oracle SQL Developer utilizando o script **DiagnosCAR.sql**.
+3. Após a execução do servidor, crie as tabelas no banco de dados Oracle SQL Developer utilizando o script **TabelasGreenPower.sql**.
 
 ### Passo 3: Criar as tabelas no banco de dados Oracle
 
